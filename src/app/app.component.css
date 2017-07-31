@@ -1,0 +1,89 @@
+@import url("http://getbootstrap.com/2.3.2/assets/css/bootstrap.css");
+
+body {
+}
+
+header {
+  margin-top: 2%;
+  margin-left: 5%;
+  text-align: left;
+}
+
+main {
+  margin-top: 5%;
+  margin-left: 10%;
+  max-width: 80%;
+}
+
+main div.rental div.images {
+  margin-right: 5%;
+  clear: none;
+}
+
+main div.rental div.features {
+  margin-top: 2%;
+}
+
+main div.rental div.features h4 {
+}
+
+main div.rental div.features div.feature {
+  margin-right: 2%;
+  float: left;
+  clear: none;
+  border: 1px solid #888888;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+main div.rental div.features div.feature i.symbol {
+  font-family: 'LastResort', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Symbola', 'Unifont Upper';
+  user-select: none;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-left: 6px;
+  position: absolute;
+}
+
+main div.rental div.features div.feature i.symbol ::after {
+/*
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: rotate(-45deg);
+  display: block;
+  height: 2px;
+  background: #888888;
+  content: '';
+*/
+}
+
+main div.rental div.desc {
+  float: none;
+  margin-top: 2%;
+}
+
+main div.rental div.pricing details::-webkit-details-marker {
+ display: none;
+}
+
+main div.rental div.pricing details div.calculation {
+  max-width: 50%;
+  margin-left: 2%;
+  font-family: monospace;
+  white-space: pre;
+}
+
+footer {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+footer div {
+  margin-right: 5%;
+  float: left;
+  clear: none;
+}
