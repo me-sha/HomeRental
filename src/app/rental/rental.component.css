@@ -1,27 +1,32 @@
 /**/
 div.images {
-  padding-top: 2%;
+  padding-top: 20px;
   float: none;
   clear: both;
 }
 
-div.images div.image {
-  float: left;
-  clear: none;
-  width: 50%;
+div.images div.gallery {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background-color: black;
+}
+
+div.images div.gallery div.image {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 div.images div.image img {
-  width: 100%;
+  max-height: 400px;
+  max-width: 100%;
+  align: center;
 }
 
 div.features {
-  padding-top: 2%;
+  padding-top: 20px;
   float: none;
   clear: both;
-}
-
-div.features h4 {
 }
 
 div.features div.feature {
@@ -49,6 +54,11 @@ div.features div.feature i.symbol {
   font-style: normal;
 }
 
+div.features div.feature div.p,div.s {
+  position: relative !important;
+  top: -16px !important;
+}
+
 div.features div.crossed ::after {
   position: relative !important;
   float: none !important;
@@ -61,8 +71,8 @@ div.features div.crossed ::after {
 }
 
 div.desc {
-  padding-top: 2%;
-  margin-top: 2%;
+  padding-top: 40px;
+  margin-top: 20px;
   float: none;
   clear: both;
 }

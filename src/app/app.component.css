@@ -3,33 +3,33 @@ body {
 }
 
 header {
-  padding-top: 2%;
-  margin-top: 2%;
+  margin-top: 50px;
   margin-left: 5%;
   text-align: left;
 }
 
 hr.header {
-  margin-top: 4%;
-  padding-top: 2%;
+  margin-top: 50px;
 }
 
 main {
-  margin-top: 2%;
+  padding-top: 20px;
+  margin-top: 20px;
   margin-left: 10%;
   max-width: 80%;
 }
 
 hr.footer {
-  margin-top: 6%;
+  margin-top: 50px;
 }
 
 footer {
+  padding-top: 10px;
   margin-left: 5%;
 }
 
 footer div {
-  margin-right: 5%;
+  margin-right: 10%;
   float: left;
   clear: none;
 }

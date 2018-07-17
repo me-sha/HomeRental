@@ -7,6 +7,18 @@ const TEXT_LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing eli
  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
+export class RentalImage {
+   url: string;
+   title: string;
+   desc: string;
+
+   constructor(url: string, title: string = '', desc: string = '') {
+     this.url = url;
+     this.title = title;
+     this.desc = desc;
+   }
+};
+
 export class Feature {
   symbol: SafeHtml;
   desc: string;
@@ -17,24 +29,38 @@ export class Feature {
     this.desc = desc;
     this.prohibited = proh;
   }
-}
+};
 
-export class Image {
-  url: string;
-  title: string;
-  desc: string;
+export class PeopleFeature extends Feature {
+  people: number;
 
-  constructor(url: string, title: string = '', desc: string = '') {
-    this.url = url;
-    this.title = title;
-    this.desc = desc;
+  constructor(people: number) {
+    super(
+      '&#128100;',
+      'Maximum allowed number of people: ' + people,
+      false
+    );
+    this.people = people;
   }
-}
+};
 
-const IMAGE_RENTAL_DEFAULT: Image = {
-  url: 'images/rental/default.jpg',
-  title: 'Default Rental',
-  desc: 'Default Rental',
+export class SpaceFeature extends Feature {
+  space: number;
+
+  constructor(space: number) {
+    super(
+      '&#127968;',
+      'Living space in square meter: ' + space + ' qm',
+      false
+    );
+    this.space = space;
+  }
+};
+
+const FEATURE_SMOKING: Feature = {
+  desc: 'No smoking inside!',
+  symbol: '&#128684;',
+  prohibited: false
 };
 
 const FEATURE_SMOKING_PROHIBITED: Feature = {
@@ -43,11 +69,11 @@ const FEATURE_SMOKING_PROHIBITED: Feature = {
   prohibited: true
 };
 
-const FEATURE_PETS_ALLOWED = new Feature(
-  'Pets are allowed.',
-  '&#128021;',
-  false
-);
+const FEATURE_PETS_ALLOWED: Feature = {
+  desc: 'Pets are allowed.',
+  symbol: '&#128021;',
+  prohibited: false
+};
 
 const FEATURE_PETS_PROHIBITED: Feature = {
   desc: 'No pets are allowed!',
@@ -68,13 +94,15 @@ const FEATURE_INTERNET_WLAN: Feature = {
 };
 
 export class Rental {
-  id: number;
+  uid: symbol;
   house: boolean;
   name: string;
-  images: Array<Image>;
   short_desc: string;
   detail_desc: string;
+  max_people: number;
+  living_space: number;
   features: Array<Feature>;
+  images: Array<RentalImage>;
   day_price: number;
   clean_extra: number;
   private _weekly_total: number;
@@ -82,27 +110,33 @@ export class Rental {
   pet_extra: number;
   private _pet_number: number;
 
-  constructor(id: number,
-              house: boolean,
+  constructor(house: boolean,
               name: string,
               short_desc: string,
               detail_desc: string,
+              max_people: number,
+              living_space: number,
               day_price: number,
               clean_extra: number,
-              pet_extra: number,
-              pet_number: number = 0,
-              features: Array<Feature> = [],
-              images: Array<Image> = [IMAGE_RENTAL_DEFAULT]) {
-    this.id = id;
+              pet_extra: number) {
+    this.uid = Symbol();
     this.house = house;
     this.name = name;
     this.short_desc = short_desc;
     this.detail_desc = detail_desc;
-    this.features = features;
+    this.max_people = max_people;
+    this.living_space = living_space;
     this.day_price = day_price;
     this.clean_extra = clean_extra;
     this.pet_extra = pet_extra;
-    this._pet_number = pet_number;
+    this._pet_number = 0;
+    this.features = new Array<Feature>();
+    this.features.push(
+      new PeopleFeature(max_people),
+      new SpaceFeature(living_space)
+    );
+    this.images = new Array<RentalImage>();
+    this.images.push(new RentalImage('assets/images/rental/default.jpg'))
   }
 
   get weekly_total(): number {
@@ -142,21 +176,32 @@ export class RentalComponent implements OnInit {
   rental: Rental;
 
   constructor() {
-    this.rental = new Rental(
-      1,
-      true,
-      'House Tremendous',
-      'Tremendous holiday house with a lovely garden.',
-      TEXT_LOREM_IPSUM,
-      65.25,
-      this._clean_extra,
-      this._pet_extra,
-      0
-    );
-    this.rental.features = [FEATURE_PETS_PROHIBITED, FEATURE_SMOKING_PROHIBITED, FEATURE_BEACH_CHAIR, FEATURE_INTERNET_WLAN],
-    this.rental.images = [new Image('assets/images/rental/tremendous/front.jpg'), new Image('assets/images/rental/tremendous/garden.jpg')]
-    this.rentals.push(this.rental);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.rental = new Rental(
+      true, //house
+      'House Tremendous', //name
+      'Tremendous holiday house with a lovely garden.', //short_desc
+      TEXT_LOREM_IPSUM, //detail_desc
+      4, //max_people
+      65, //living_space
+      65.25, //day_price
+      this._clean_extra, //clean_extra
+      this._pet_extra //pet_extra
+    );
+    this.rental.features.push(
+      FEATURE_PETS_PROHIBITED,
+      FEATURE_SMOKING_PROHIBITED,
+      FEATURE_BEACH_CHAIR,
+      FEATURE_INTERNET_WLAN
+    );
+    this.rental.images.push(
+      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
+      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
+      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
+      new RentalImage('assets/images/rental/tremendous/garden.jpg')
+    );
+    this.rentals.push(this.rental);
+  }
 }

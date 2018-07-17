@@ -2,15 +2,20 @@
 <h3>{{rental.short_desc}}</h3>
 <div class="images">
   <h4>Pictures</h4>
-  <div *ngFor="let image of rental.images" class="image">
-    <img [src]="image.url" [alt]="image.desc" [title]="image.title"/>
+  <div class="gallery">
+    <div *ngFor="let image of rental.images" class="image">
+      <img [src]="image.url" [alt]="image.desc" [title]="image.title"/>
+    </div>
   </div>
 </div>
 <br/>
 <div class="features">
   <h4>Features</h4>
-  <div *ngFor="let feature of rental.features" class="feature" [class.crossed]="feature.prohibited" title="{{feature.desc}}">
+  <div *ngFor="let feature of rental.features" class="feature"
+       [class.crossed]="feature.prohibited" title="{{feature.desc}}">
     <i class="symbol" [innerHtml]="feature.symbol"></i>
+    <div *ngIf="feature.people" class="p">Max. {{feature.people}}</div>
+    <div *ngIf="feature.space" class="s">{{feature.space}}m²</div>
   </div>
 </div>
 <div class="desc">
@@ -24,7 +29,7 @@
 Price per Week: {{rental.day_price * 7.0}} = {{rental.day_price}} &times; 7
 Cleaning:       {{rental.clean_extra}}
 Dogs and Pets:  {{rental.pet_extra * rental.pet_number}} = {{rental.pet_extra}} &times; {{rental.pet_number}}
-Summe:          {{rental.weekly_total}}
+Total per Week: {{rental.weekly_total}}
     </div>
   </details>
 </div>
