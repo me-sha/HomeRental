@@ -1,0 +1,84 @@
+/**/
+div.images {
+  padding-top: 2%;
+  float: none;
+  clear: both;
+}
+
+div.images div.image {
+  float: left;
+  clear: none;
+  width: 50%;
+}
+
+div.images div.image img {
+  width: 100%;
+}
+
+div.features {
+  padding-top: 2%;
+  float: none;
+  clear: both;
+}
+
+div.features h4 {
+}
+
+div.features div.feature {
+  float: left;
+  clear: none;
+  margin-right: 8px;
+  text-align: center;
+  align-self: center;
+  align-content: center;
+  width: 88px;
+  height: 80px;
+}
+
+div.features div.bordered {
+  border-style: solid;
+  border-color: lightgrey;
+  border-width: 2px;
+  border-radius: 12px 12px 12px 12px;
+}
+
+div.features div.feature i.symbol {
+  font-family: 'LastResort', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Symbola', 'Unifont Upper';
+  user-select: none;
+  font-size: 50px;
+  font-style: normal;
+}
+
+div.features div.crossed ::after {
+  position: relative !important;
+  float: none !important;
+  top: -40px !important;
+  transform: rotate(45deg);
+  display: block;
+  height: 4px;
+  background: red;
+  content: '';
+}
+
+div.desc {
+  padding-top: 2%;
+  margin-top: 2%;
+  float: none;
+  clear: both;
+}
+
+div.pricing .noselect {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+div.pricing details::-webkit-details-marker {
+  display: none;
+}
+
+div.pricing details div.calculation {
+  max-width: 50%;
+  margin-left: 2%;
+  font-family: monospace;
+  white-space: pre;
+}

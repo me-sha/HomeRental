@@ -2,45 +2,11 @@
   <h1>{{title}}</h1>
   <h2>{{desc}}</h2>
 </header>
-<hr/>
+<hr class="header"/>
 <main>
-  <div class="rental">
-    <div class="images"></div>
-    <h2>{{rental.name}}</h2>
-    <h3>{{rental.short_desc}}</h3>
-    <div class="images">
-      <div *ngFor="let image of rental.images" class="image">
-        <img src="{{image}}" alt="{{image.desc}}" title="{{image.desc}}"/>
-      </div>
-    </div>
-
-    <div class="features">
-      <h4>Features</h4>
-      <div *ngFor="let feature of rental.features" class="feature" title="{{feature.desc}}">
-        <i class="symbol" [innerHtml]="feature.symbol"></i>
-      </div>
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <div class="desc">
-      <h4>Description</h4>
-      <p>{{rental.detail_desc}}</p>
-    </div>
-    <div class="pricing">
-      <details>
-        <summary><b>Weekly-Pricing:</b> {{(rental.weekly_total)}}</summary>
-        <div class="calculation">
-Price per Week: {{rental.day_price * 7.0}} = {{rental.day_price}} &times; 7
-Cleaning:       {{rental.clean_extra}}
-Dogs and Pets:  {{rental.pet_extra * rental.pet_number}} = {{rental.pet_extra}} &times; {{rental.pet_number}}
-Summe:          {{rental.weekly_total}}
-        </div>
-      </details>
-    </div>
-  </div>
+  <app-rental></app-rental>
 </main>
-<hr/>
+<hr class="footer"/>
 <footer>
   <div class="contact">
     <h4>Contact</h4>
