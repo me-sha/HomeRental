@@ -1,4 +1,5 @@
 /**/
+
 div.images {
   padding-top: 20px;
   float: none;
@@ -18,26 +19,24 @@ div.images div.gallery div.image {
 }
 
 div.images div.image img {
-  max-height: 400px;
+  margin-right: 10px;
+  max-height: 380px;
   max-width: 100%;
   align: center;
 }
 
 div.features {
-  padding-top: 20px;
+  padding-top: 10px;
   float: none;
   clear: both;
 }
 
 div.features div.feature {
+  margin-bottom: 16px;
+  margin-right: 4%;
   float: left;
-  clear: none;
-  margin-right: 8px;
-  text-align: center;
-  align-self: center;
-  align-content: center;
-  width: 88px;
-  height: 80px;
+  clear: right;
+  height: 70px;
 }
 
 div.features div.bordered {
@@ -59,36 +58,104 @@ div.features div.feature div.p,div.s {
   top: -16px !important;
 }
 
+div.features div.feature div.s {
+  left: 6px;
+}
+
 div.features div.crossed ::after {
   position: relative !important;
   float: none !important;
   top: -40px !important;
+  left: -8px;
   transform: rotate(45deg);
   display: block;
   height: 4px;
+  width: 138%;
   background: red;
   content: '';
 }
 
 div.desc {
-  padding-top: 40px;
-  margin-top: 20px;
+  padding-top: 20px;
   float: none;
-  clear: both;
+  clear: left;
 }
 
-div.pricing .noselect {
-  user-select: none;
-  -webkit-user-select: none;
+div.pricing {
+  margin-top: 20px;
 }
 
-div.pricing details::-webkit-details-marker {
-  display: none;
+div.pricing details {
+  width: auto;
+  align-content: left !important;
+  align-self: left !important;
+}
+
+div.pricing details summary {
+}
+
+div.pricing details summary::-webkit-details-marker {
+  display: none !important;
+}
+
+div.pricing details summary:after {
+  content: '' !important;
+}
+
+div.pricing details[open] summary:after {
+  content: '' !important;
 }
 
 div.pricing details div.calculation {
-  max-width: 50%;
-  margin-left: 2%;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+div.pricing details div.calculation pre {
   font-family: monospace;
-  white-space: pre;
+  font-size: 13;
+}
+
+div.pricing details div.calculation pre button {
+  margin-left: 2px;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  background-color: #e7e7e7;
+  color: black;
+  cursor: pointer;
+}
+
+div.pricing details div.calculation pre button.decr.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+div.pricing details div.calculation hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: auto;
+  margin-left: 0;
+}
+
+div.request {
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 6px;
+  background-color: #e7e7e7;
+  text-align: center;
+  align-content: center;
+}
+
+div.request a {
+  display: block;
+  font-weight: bold;
+  vertical-align: middle !important;
+  color: black;
 }

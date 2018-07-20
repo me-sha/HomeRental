@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Http } from '@angular/http';
+
+export function paddingLeft(text: string, padChar: string, size: number): string {
+  return (String(padChar).repeat(size)).substr( (size * -1), size);
+};
 
 const TEXT_LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -87,9 +92,27 @@ const FEATURE_BEACH_CHAIR: Feature = {
   prohibited: false
 };
 
+const FEATURE_TV: Feature = {
+  desc: 'TV available.',
+  symbol: '&#128250;',
+  prohibited: false
+};
+
 const FEATURE_INTERNET_WLAN: Feature = {
   desc: 'Internet via WLAN',
   symbol: '&#128246;',
+  prohibited: false
+};
+
+const FEATURE_WASHER_DISHES: Feature = {
+  desc: 'Dish washer available.',
+  symbol: '&#127869;',
+  prohibited: false
+};
+
+const FEATURE_WASHER_LAUNDRY: Feature = {
+  desc: 'Laundry washer available.',
+  symbol: '&#128085;',
   prohibited: false
 };
 
@@ -109,34 +132,22 @@ export class Rental {
   weekly_diverged = true;
   pet_extra: number;
   private _pet_number: number;
+  max_pet_number: number = 8;
 
-  constructor(house: boolean,
-              name: string,
-              short_desc: string,
-              detail_desc: string,
-              max_people: number,
-              living_space: number,
-              day_price: number,
-              clean_extra: number,
-              pet_extra: number) {
+  constructor() {
     this.uid = Symbol();
-    this.house = house;
-    this.name = name;
-    this.short_desc = short_desc;
-    this.detail_desc = detail_desc;
-    this.max_people = max_people;
-    this.living_space = living_space;
-    this.day_price = day_price;
-    this.clean_extra = clean_extra;
-    this.pet_extra = pet_extra;
     this._pet_number = 0;
     this.features = new Array<Feature>();
-    this.features.push(
-      new PeopleFeature(max_people),
-      new SpaceFeature(living_space)
-    );
     this.images = new Array<RentalImage>();
     this.images.push(new RentalImage('assets/images/rental/default.jpg'))
+  }
+
+  init() {
+
+    this.features.push(
+      new PeopleFeature(this.max_people),
+      new SpaceFeature(this.living_space)
+    );
   }
 
   get weekly_total(): number {
@@ -147,9 +158,6 @@ export class Rental {
       this.weekly_diverged = false;
     }
     return this._weekly_total;
-  }
-  set weekly_total(weekly: number) {
-    this._weekly_total = weekly;
   }
 
   get pet_number(): number {
@@ -175,26 +183,33 @@ export class RentalComponent implements OnInit {
   rentals: Array<Rental> = [];
   rental: Rental;
 
-  constructor() {
+  data;
+
+  constructor(private http: Http) {
+    this.http.get('assets/data/tremendous-rental.json')
+      .subscribe(res => this.data = res.json());
   }
 
   ngOnInit() {
-    this.rental = new Rental(
-      true, //house
-      'House Tremendous', //name
-      'Tremendous holiday house with a lovely garden.', //short_desc
-      TEXT_LOREM_IPSUM, //detail_desc
-      4, //max_people
-      65, //living_space
-      65.25, //day_price
-      this._clean_extra, //clean_extra
-      this._pet_extra //pet_extra
-    );
+    this.rental = new Rental();
+    this.rental.house = true;
+    this.rental.name = 'House Tremendous';
+    this.rental.short_desc = 'Tremendous holiday house with a lovely garden.';
+    this.rental.detail_desc = TEXT_LOREM_IPSUM;
+    this.rental.max_people = 4;
+    this.rental.living_space = 65;
+    this.rental.day_price = 65.25;
+    this.rental.clean_extra = this._clean_extra;
+    this.rental.pet_extra = this._pet_extra;
+    this.rental.init()
     this.rental.features.push(
       FEATURE_PETS_PROHIBITED,
       FEATURE_SMOKING_PROHIBITED,
       FEATURE_BEACH_CHAIR,
-      FEATURE_INTERNET_WLAN
+      FEATURE_TV,
+      FEATURE_INTERNET_WLAN,
+      FEATURE_WASHER_DISHES,
+      FEATURE_WASHER_LAUNDRY,
     );
     this.rental.images.push(
       new RentalImage('assets/images/rental/tremendous/garden.jpg'),
@@ -202,6 +217,12 @@ export class RentalComponent implements OnInit {
       new RentalImage('assets/images/rental/tremendous/garden.jpg'),
       new RentalImage('assets/images/rental/tremendous/garden.jpg')
     );
+
+    //let serialized = JSON.stringify(this.rental);
+    //console.log("yess", serialized);
+
+    //this.rental = Object.assign( new Rental(), this.data);
+
     this.rentals.push(this.rental);
   }
 }
