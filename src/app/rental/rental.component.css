@@ -113,7 +113,7 @@ div.pricing details div.calculation {
 
 div.pricing details div.calculation pre {
   font-family: monospace;
-  font-size: 13;
+  font-size: 14;
 }
 
 div.pricing details div.calculation pre button {
@@ -129,9 +129,9 @@ div.pricing details div.calculation pre button {
   cursor: pointer;
 }
 
-div.pricing details div.calculation pre button.decr.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+div.pricing details div.calculation pre button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed !important;
 }
 
 div.pricing details div.calculation hr {
