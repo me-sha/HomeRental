@@ -1,14 +1,6 @@
 {
   "weekly_diverged": true,
-  "house": true,
-  "name": "House Tremendous",
-  "short_desc": "Tremendous holiday house with a lovely garden.",
-  "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "max_people": 4,
-  "living_space": 65,
-  "day_price": 65.25,
-  "clean_extra": 50,
-  "pet_extra": 10,
+  "max_pet_number": 8,
   "_pet_number": 0,
   "features": [{
     "symbol": "&#128100;",
@@ -33,8 +25,20 @@
     "symbol": "&#127958;",
     "prohibited": false
   }, {
+    "desc": "TV available.",
+    "symbol": "&#128250;",
+    "prohibited": false
+  }, {
     "desc": "Internet via WLAN",
     "symbol": "&#128246;",
+    "prohibited": false
+  }, {
+    "desc": "Dish washer available.",
+    "symbol": "&#127869;",
+    "prohibited": false
+  }, {
+    "desc": "Laundry washer available.",
+    "symbol": "&#128085;",
     "prohibited": false
   }],
   "images": [{
@@ -57,5 +61,14 @@
     "url": "assets/images/rental/tremendous/garden.jpg",
     "title": "",
     "desc": ""
-  }]
+  }],
+  "house": true,
+  "name": "House Tremendous",
+  "short_desc": "Tremendous holiday house with a lovely garden.",
+  "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "max_people": 4,
+  "living_space": 65,
+  "day_price": 65.25,
+  "clean_extra": 50,
+  "pet_extra": 10
 }

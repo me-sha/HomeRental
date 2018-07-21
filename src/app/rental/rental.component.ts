@@ -74,13 +74,13 @@ const FEATURE_SMOKING_PROHIBITED: Feature = {
   prohibited: true
 };
 
-const FEATURE_PETS_ALLOWED: Feature = {
+export const FEATURE_PETS_ALLOWED: Feature = {
   desc: 'Pets are allowed.',
   symbol: '&#128021;',
   prohibited: false
 };
 
-const FEATURE_PETS_PROHIBITED: Feature = {
+export const FEATURE_PETS_PROHIBITED: Feature = {
   desc: 'No pets are allowed!',
   symbol: '&#128021;',
   prohibited: true
@@ -128,6 +128,8 @@ export class Rental {
   images: Array<RentalImage>;
   day_price: number;
   clean_extra: number;
+  bookings: string;
+
   private _weekly_total: number;
   weekly_diverged = true;
   pet_extra: number;
@@ -217,11 +219,6 @@ export class RentalComponent implements OnInit {
       new RentalImage('assets/images/rental/tremendous/garden.jpg'),
       new RentalImage('assets/images/rental/tremendous/garden.jpg')
     );
-
-    //let serialized = JSON.stringify(this.rental);
-    //console.log("yess", serialized);
-
-    //this.rental = Object.assign( new Rental(), this.data);
 
     this.rentals.push(this.rental);
   }
