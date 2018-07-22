@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Http } from '@angular/http';
+import { Response } from '@angular/http';
+import * as jQuery from 'jquery';
 
 export function paddingLeft(text: string, padChar: string, size: number): string {
   return (String(padChar).repeat(size)).substr( (size * -1), size);
@@ -12,111 +14,127 @@ const TEXT_LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing eli
  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
-export class RentalImage {
+export interface Deserializeable<T> { deserialize(json: any): T; }
+
+export class RentalImage implements Deserializeable<RentalImage> {
    url: string;
    title: string;
    desc: string;
 
-   constructor(url: string, title: string = '', desc: string = '') {
-     this.url = url;
-     this.title = title;
-     this.desc = desc;
+   deserialize(json) {
+     jQuery.extend(this, json);
+     return this;
    }
 };
 
-export class Feature {
-  symbol: SafeHtml;
+export class RentalFeature implements Deserializeable<RentalFeature> {
+  symbol: string;
   desc: string;
   prohibited: boolean;
 
-  constructor(symb: string, desc: string, proh: boolean = false) {
-    this.symbol = symb;
-    this.desc = desc;
-    this.prohibited = proh;
+  deserialize(json) {
+    jQuery.extend(this, json);
+    return this;
   }
 };
 
-export class PeopleFeature extends Feature {
-  people: number;
+export class PeopleRentalFeature extends RentalFeature {
+  private _people: number;
 
-  constructor(people: number) {
-    super(
-      '&#128100;',
-      'Maximum allowed number of people: ' + people,
-      false
-    );
+  constructor() {
+    super();
+    this.symbol = '&#128100;';
+    this.prohibited = false;
+  }
+
+  init(people: number): PeopleRentalFeature {
     this.people = people;
+    return this;
   }
+
+  set people(people: number) {
+    this.desc = 'Maximum allowed number of people: ' + people;
+    this._people = people;
+  }
+  get people() { return this._people; }
 };
 
-export class SpaceFeature extends Feature {
-  space: number;
+export class SpaceRentalFeature extends RentalFeature {
+  private _space: number;
 
-  constructor(space: number) {
-    super(
-      '&#127968;',
-      'Living space in square meter: ' + space + ' qm',
-      false
-    );
+  constructor() {
+    super();
+    this.symbol = '&#127968;';
+    this.prohibited = false;
+  }
+
+  init(space: number): SpaceRentalFeature {
     this.space = space;
+    return this;
   }
+
+  set space(space: number) {
+    this.desc = 'Living space in square meter: ' + space + ' qm';
+    this._space = space;
+  }
+  get space() { return this._space; }
 };
 
-const FEATURE_SMOKING: Feature = {
-  desc: 'No smoking inside!',
+const FEATURE_SMOKING: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#128684;',
+  desc: 'No smoking inside!',
   prohibited: false
-};
+});
 
-const FEATURE_SMOKING_PROHIBITED: Feature = {
-  desc: 'No smoking inside!',
+const FEATURE_SMOKING_PROHIBITED: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#128684;',
+  desc: 'No smoking inside!',
   prohibited: true
-};
+});
 
-export const FEATURE_PETS_ALLOWED: Feature = {
+export const FEATURE_PETS_ALLOWED: RentalFeature = (new RentalFeature()).deserialize({
+  symbol: '&#128021;',
   desc: 'Pets are allowed.',
-  symbol: '&#128021;',
   prohibited: false
-};
+});
 
-export const FEATURE_PETS_PROHIBITED: Feature = {
+export const FEATURE_PETS_PROHIBITED: RentalFeature = (new RentalFeature()).deserialize({
+  symbol: '&#128021;',
   desc: 'No pets are allowed!',
-  symbol: '&#128021;',
   prohibited: true
-};
+});
 
-const FEATURE_BEACH_CHAIR: Feature = {
-  desc: 'Personal Beach Chair on the beach.',
+const FEATURE_BEACH_CHAIR: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#127958;',
+  desc: 'Personal Beach Chair on the beach.',
   prohibited: false
-};
+});
 
-const FEATURE_TV: Feature = {
-  desc: 'TV available.',
+const FEATURE_TV: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#128250;',
+  desc: 'TV available.',
   prohibited: false
-};
+});
 
-const FEATURE_INTERNET_WLAN: Feature = {
-  desc: 'Internet via WLAN',
+const FEATURE_INTERNET_WLAN: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#128246;',
+  desc: 'Internet via WLAN',
   prohibited: false
-};
+});
 
-const FEATURE_WASHER_DISHES: Feature = {
-  desc: 'Dish washer available.',
+const FEATURE_WASHER_DISHES: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#127869;',
+  desc: 'Dish washer available.',
   prohibited: false
-};
+});
 
-const FEATURE_WASHER_LAUNDRY: Feature = {
-  desc: 'Laundry washer available.',
+const FEATURE_WASHER_LAUNDRY: RentalFeature = (new RentalFeature()).deserialize({
   symbol: '&#128085;',
+  desc: 'Laundry washer available.',
   prohibited: false
-};
+});
 
-export class Rental {
+export class Rental implements Deserializeable<Rental> {
   uid: symbol;
   house: boolean;
   name: string;
@@ -124,7 +142,7 @@ export class Rental {
   detail_desc: string;
   max_people: number;
   living_space: number;
-  features: Array<Feature>;
+  features: Array<RentalFeature>;
   images: Array<RentalImage>;
   day_price: number;
   clean_extra: number;
@@ -137,19 +155,33 @@ export class Rental {
   max_pet_number: number = 8;
 
   constructor() {
-    this.uid = Symbol();
-    this._pet_number = 0;
-    this.features = new Array<Feature>();
+    this.features = new Array<RentalFeature>();
     this.images = new Array<RentalImage>();
-    this.images.push(new RentalImage('assets/images/rental/default.jpg'))
+  }
+
+  deserialize(json) {
+    jQuery.extend(this, json);
+    if (json.features) { this.features = jQuery.map(json.features, (e) => { return (new RentalFeature()).deserialize(e); }); }
+    if (json.images)   { this.images = jQuery.map(json.images, (e) => { return (new RentalImage()).deserialize(e); }); }
+    return this;
   }
 
   init() {
-
+    this.uid = Symbol();
+    this._pet_number = 0;
     this.features.push(
-      new PeopleFeature(this.max_people),
-      new SpaceFeature(this.living_space)
+      (new PeopleRentalFeature()).init(this.max_people),
+      (new SpaceRentalFeature()).init(this.living_space)
     );
+  }
+
+  featureIndexOf(feature: RentalFeature) {
+    for (var i = 0; i < this.features.length; i++) {
+      var f = this.features[i];
+      if (f.symbol === feature.symbol ) { return i; }
+    }
+
+    return -1;
   }
 
   get weekly_total(): number {
@@ -179,47 +211,27 @@ export class Rental {
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
+  FEATURE_PETS_PROHIBITED = FEATURE_PETS_PROHIBITED;
+
   private _clean_extra = 50.0;
   private _pet_extra = 10.0;
 
   rentals: Array<Rental> = [];
   rental: Rental;
 
-  data;
+  json: any;
 
   constructor(private http: Http) {
-    this.http.get('assets/data/tremendous-rental.json')
-      .subscribe(res => this.data = res.json());
   }
 
   ngOnInit() {
-    this.rental = new Rental();
-    this.rental.house = true;
-    this.rental.name = 'House Tremendous';
-    this.rental.short_desc = 'Tremendous holiday house with a lovely garden.';
-    this.rental.detail_desc = TEXT_LOREM_IPSUM;
-    this.rental.max_people = 4;
-    this.rental.living_space = 65;
-    this.rental.day_price = 65.25;
-    this.rental.clean_extra = this._clean_extra;
-    this.rental.pet_extra = this._pet_extra;
-    this.rental.init()
-    this.rental.features.push(
-      FEATURE_PETS_PROHIBITED,
-      FEATURE_SMOKING_PROHIBITED,
-      FEATURE_BEACH_CHAIR,
-      FEATURE_TV,
-      FEATURE_INTERNET_WLAN,
-      FEATURE_WASHER_DISHES,
-      FEATURE_WASHER_LAUNDRY,
-    );
-    this.rental.images.push(
-      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
-      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
-      new RentalImage('assets/images/rental/tremendous/garden.jpg'),
-      new RentalImage('assets/images/rental/tremendous/garden.jpg')
-    );
-
-    this.rentals.push(this.rental);
+    this.http.get('assets/data/tremendous-rental.json')
+    .subscribe((res:Response) => {
+      this.json = res.json();
+      console.log(this.json);
+      this.rental = new Rental();
+      this.rental.deserialize(this.json);
+      this.rentals.push(this.rental);
+    });
   }
 }

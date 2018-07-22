@@ -28,7 +28,7 @@
     <div class="calculation">
       <pre>
 Price per Week:&nbsp;&nbsp;&nbsp;<b>{{rental.day_price * 7.0 | number : '1.2-2'}}</b>&emsp;&emsp;=&nbsp;{{rental.day_price | number : '1.2-2'}} &times; 7
-Cleaning Fee:&nbsp;&nbsp;&nbsp;+&nbsp;<b>{{rental.clean_extra | number : '3.2-2'}}</b><div *ngIf="rental.features.indexOf(FEATURE_PETS_PROHIBITED) > -1" class="pets">
+Cleaning Fee:&nbsp;&nbsp;&nbsp;+&nbsp;<b>{{rental.clean_extra | number : '3.2-2'}}</b><div *ngIf="rental.featureIndexOf(FEATURE_PETS_PROHIBITED) > -1" class="pets">
 Dogs and Pets:&nbsp;&nbsp;+&nbsp;<b>{{rental.pet_extra * rental.pet_number | number : '3.2-2'}}</b>&emsp;&emsp;=&nbsp;{{rental.pet_extra | number : '1.2-2'}}&nbsp;&times;&thinsp;<button class="decr" [disabled]="(rental.pet_number <= 0)" (click)="rental.pet_number = rental.pet_number - 1">-</button>&thinsp;{{rental.pet_number}}&thinsp;<button class="incr" [disabled]="rental.pet_number >= rental.max_pet_number" (click)="rental.pet_number = rental.pet_number + 1">+</button></div>
 <hr>Total per Week:&nbsp;&nbsp;&nbsp;<b>{{rental.weekly_total | number : '3.2-2'}}</b>
       </pre>

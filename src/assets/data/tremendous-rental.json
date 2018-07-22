@@ -13,32 +13,32 @@
     "prohibited": false,
     "space": 65
   }, {
-    "desc": "No pets are allowed!",
     "symbol": "&#128021;",
-    "prohibited": true
+    "desc": "Pets are allowed!",
+    "prohibited": false
   }, {
-    "desc": "No smoking inside!",
     "symbol": "&#128684;",
+    "desc": "No smoking inside!",
     "prohibited": true
   }, {
-    "desc": "Personal Beach Chair on the beach.",
     "symbol": "&#127958;",
+    "desc": "Personal Beach Chair on the beach.",
     "prohibited": false
   }, {
-    "desc": "TV available.",
     "symbol": "&#128250;",
+    "desc": "TV available.",
     "prohibited": false
   }, {
-    "desc": "Internet via WLAN",
     "symbol": "&#128246;",
+    "desc": "Internet via WLAN",
     "prohibited": false
   }, {
-    "desc": "Dish washer available.",
     "symbol": "&#127869;",
+    "desc": "Dish washer available.",
     "prohibited": false
   }, {
-    "desc": "Laundry washer available.",
     "symbol": "&#128085;",
+    "desc": "Laundry washer available.",
     "prohibited": false
   }],
   "images": [{
