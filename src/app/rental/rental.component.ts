@@ -210,28 +210,29 @@ export class Rental implements Deserializeable<Rental> {
   templateUrl: './rental.component.html',
   styleUrls: ['./rental.component.css']
 })
-export class RentalComponent implements OnInit {
+export class RentalComponent implements OnInit, Deserializeable<RentalComponent> {
   FEATURE_PETS_PROHIBITED = FEATURE_PETS_PROHIBITED;
 
   private _clean_extra = 50.0;
   private _pet_extra = 10.0;
 
-  rentals: Array<Rental> = [];
+  rentals: Array<Rental>;
   rental: Rental;
-
-  json: any;
 
   constructor(private http: Http) {
   }
 
+  deserialize(json): RentalComponent {
+    jQuery.extend(this, json);
+    if (json.rentals) { this.rentals = jQuery.map(json.rentals, (e) => { return (new Rental()).deserialize(e); }); }
+    return this;
+  }
+
   ngOnInit() {
-    this.http.get('assets/data/tremendous-rental.json')
+    this.http.get('assets/data/rentals.json')
     .subscribe((res:Response) => {
-      this.json = res.json();
-      console.log(this.json);
-      this.rental = new Rental();
-      this.rental.deserialize(this.json);
-      this.rentals.push(this.rental);
+      this.deserialize(res.json());
+      this.rental = this.rentals[0];
     });
   }
 }

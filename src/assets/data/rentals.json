@@ -1,0 +1,152 @@
+{
+  "_clean_extra": 50,
+  "_pet_extra": 10,
+  "rentals": [{
+      "weekly_diverged": true,
+      "max_pet_number": 8,
+      "features": [{
+        "symbol": "&#128100;",
+        "desc": "Maximum allowed number of people: 4",
+        "prohibited": false,
+        "people": 4
+      }, {
+        "symbol": "&#127968;",
+        "desc": "Living space in square meter: 65 qm",
+        "prohibited": false,
+        "space": 65
+      }, {
+        "symbol": "&#128021;",
+        "desc": "Pets are allowed!",
+        "prohibited": false
+      }, {
+        "symbol": "&#128684;",
+        "desc": "No smoking inside!",
+        "prohibited": true
+      }, {
+        "symbol": "&#127958;",
+        "desc": "Personal Beach Chair on the beach.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128250;",
+        "desc": "TV available.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128246;",
+        "desc": "Internet via WLAN",
+        "prohibited": false
+      }, {
+        "symbol": "&#127869;",
+        "desc": "Dish washer available.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128085;",
+        "desc": "Laundry washer available.",
+        "prohibited": false
+      }],
+      "images": [{
+        "url": "assets/images/rental/default.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }],
+      "_pet_number": 0,
+      "house": true,
+      "name": "House Tremendous",
+      "short_desc": "Tremendous holiday house with a lovely garden.",
+      "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "max_people": 4,
+      "living_space": 65,
+      "day_price": 65.25,
+      "clean_extra": 50,
+      "pet_extra": 10
+    },
+    {
+      "weekly_diverged": true,
+      "max_pet_number": 8,
+      "features": [{
+        "symbol": "&#128100;",
+        "desc": "Maximum allowed number of people: 4",
+        "prohibited": false,
+        "people": 4
+      }, {
+        "symbol": "&#127968;",
+        "desc": "Living space in square meter: 65 qm",
+        "prohibited": false,
+        "space": 65
+      }, {
+        "symbol": "&#128021;",
+        "desc": "Pets are allowed!",
+        "prohibited": false
+      }, {
+        "symbol": "&#128684;",
+        "desc": "No smoking inside!",
+        "prohibited": true
+      }, {
+        "symbol": "&#127958;",
+        "desc": "Personal Beach Chair on the beach.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128250;",
+        "desc": "TV available.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128246;",
+        "desc": "Internet via WLAN",
+        "prohibited": false
+      }, {
+        "symbol": "&#127869;",
+        "desc": "Dish washer available.",
+        "prohibited": false
+      }, {
+        "symbol": "&#128085;",
+        "desc": "Laundry washer available.",
+        "prohibited": false
+      }],
+      "images": [{
+        "url": "assets/images/rental/default.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }, {
+        "url": "assets/images/rental/tremendous/garden.jpg",
+        "title": "",
+        "desc": ""
+      }],
+      "_pet_number": 0,
+      "house": true,
+      "name": "House Tremendous",
+      "short_desc": "Tremendous holiday house with a lovely garden.",
+      "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "max_people": 4,
+      "living_space": 65,
+      "day_price": 65.25,
+      "clean_extra": 50,
+      "pet_extra": 10
+  }]
+}
