@@ -4,15 +4,19 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RentalComponent } from './rental/rental.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RentalComponent
+    HomeComponent,
+    RentalComponent,
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
