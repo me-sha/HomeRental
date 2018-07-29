@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { RentalComponent } from './rental/rental.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RentalsComponent } from './rentals/rentals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RentalComponent,
+    RentalsComponent,
   ],
   imports: [
     BrowserModule,

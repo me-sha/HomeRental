@@ -6,16 +6,16 @@
     "symbol": "&#128100;",
     "desc": "Maximum allowed number of people:",
     "prohibited": false,
-    "people": 6
+    "people": 4
   }, {
     "symbol": "&#127968;",
     "desc": "Living space in square meter:",
     "prohibited": false,
-    "space": 120
+    "space": 65
   }, {
     "symbol": "&#128021;",
-    "desc": "Pets are allowed!",
-    "prohibited": false
+    "desc": "Pets are not allowed!",
+    "prohibited": true
   }, {
     "symbol": "&#128684;",
     "desc": "No smoking inside!",
@@ -63,10 +63,10 @@
     "desc": ""
   }],
   "house": true,
-  "name": "House Tremendous",
-  "short_desc": "Tremendous holiday house with a lovely garden.",
+  "name": "Flat Basus",
+  "short_desc": "Basic holiday flat with balcony.",
   "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "day_price": 65.25,
+  "day_price": 50.99,
   "clean_extra": 50,
   "pet_extra": 10
 }

@@ -1,6 +1,4 @@
 {
-  "_clean_extra": 50,
-  "_pet_extra": 10,
   "rentals": [{
       "weekly_diverged": true,
       "max_pet_number": 8,

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Http } from '@angular/http';
-import { Response } from '@angular/http';
 import * as jQuery from 'jquery';
 import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature} from './feature';
 import { RentalImage } from './image';
@@ -89,7 +87,7 @@ export class RentalComponent implements OnInit {
   constructor(private http: Http) {}
 
   ngOnInit() {
-    this.http.get('assets/data/rentals.json').subscribe((res: Response) => {
+    this.http.get('assets/data/rentals.json').subscribe((res) => {
       this.rentals = jQuery.map(res.json().rentals, (e) => {
         return (new Rental()).deserialize(e);
       });
