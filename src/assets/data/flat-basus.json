@@ -1,4 +1,12 @@
 {
+  "id": "flat-basus",
+  "name": "Flat Basus",
+  "house": true,
+  "short_desc": "Basic holiday flat with balcony.",
+  "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "day_price": 50.99,
+  "clean_extra": 50,
+  "pet_extra": 10,  
   "weekly_diverged": true,
   "max_pet_number": 8,
   "_pet_number": 0,
@@ -61,12 +69,5 @@
     "url": "assets/images/rental/tremendous/garden.jpg",
     "title": "",
     "desc": ""
-  }],
-  "house": true,
-  "name": "Flat Basus",
-  "short_desc": "Basic holiday flat with balcony.",
-  "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "day_price": 50.99,
-  "clean_extra": 50,
-  "pet_extra": 10
+  }]
 }

@@ -12,6 +12,25 @@ hr.header {
   margin-top: 50px;
 }
 
+nav a {
+  padding: 5px 10px;
+  margin-left: 5px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607d8b;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+nav a.active {
+  color: #039be5;
+}
+
 main {
   padding-top: 20px;
   margin-top: 20px;

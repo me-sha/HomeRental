@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import * as jQuery from 'jquery';
-import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature} from './feature';
-import { RentalImage } from './image';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature } from './feature';
+import { RentalImage } from './image'
 import { Rental } from './rental';
+import { RentalService } from '../rental.service';
 
 export function paddingLeft(text: string, padChar: string, size: number): string {
   return (String(padChar).repeat(size)).substr( (size * -1), size);
@@ -71,10 +72,6 @@ const FEATURE_WASHER_LAUNDRY: RentalFeature = (new RentalFeature()).deserialize(
 export class RentalComponent implements OnInit {
   FEATURE_PETS_PROHIBITED = FEATURE_PETS_PROHIBITED;
 
-  private _clean_extra = 50.0;
-  private _pet_extra = 10.0;
-
-  rentals: Array<Rental>;
   rental: Rental;
 
   private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com, another@site.com, me@site.com";
@@ -84,14 +81,21 @@ export class RentalComponent implements OnInit {
     return this._mailto + subject + body;
   }
 
-  constructor(private http: Http) {}
+  constructor(private route: ActivatedRoute,
+              private rentalService: RentalService,
+              private location: Location) {}
 
   ngOnInit() {
-    this.http.get('assets/data/rentals.json').subscribe((res) => {
-      this.rentals = jQuery.map(res.json().rentals, (e) => {
-        return (new Rental()).deserialize(e);
-      });
-      this.rental = this.rentals[0];
+    const id = this.route.snapshot.paramMap.get('id');
+    this.rentalService.getRental(id).subscribe((rental) => {
+      if (rental === null) { this.location.back(); }
+      this.rental = rental;
     });
+  }
+
+  isPetsAllowed(): boolean {
+    var index = this.rental.featureIndexOf(FEATURE_PETS_PROHIBITED);
+    if (index > -1) { return !this.rental.features[index].prohibited; }
+    return false;
   }
 }

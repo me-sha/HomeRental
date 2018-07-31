@@ -3,9 +3,9 @@ import {RentalFeature, PeopleRentalFeature, SpaceRentalFeature} from './feature'
 import {RentalImage} from './image'
 
 export class Rental implements Deserializeable<Rental> {
-  uid: symbol;
-  house: boolean;
+  id: string;
   name: string;
+  house: boolean;
   short_desc: string;
   detail_desc: string;
   max_people: number;
@@ -23,7 +23,6 @@ export class Rental implements Deserializeable<Rental> {
   max_pet_number: number = 8;
 
   constructor() {
-    this.uid = Symbol();
     this.features = new Array<RentalFeature>();
     this.images = new Array<RentalImage>();
   }
