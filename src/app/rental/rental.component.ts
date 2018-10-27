@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature } from './feature';
@@ -73,14 +73,9 @@ export class RentalComponent implements OnInit {
   FEATURE_PETS_PROHIBITED = FEATURE_PETS_PROHIBITED;
 
   rental: Rental;
+  feature: RentalFeature;
 
   private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com, another@site.com, me@site.com";
-  get mailto(): string {
-    var subject ="&subject=rental-request: " + this.rental.name;
-    var body = "&body=Body-goes-here";
-    return this._mailto + subject + body;
-  }
-
   constructor(private route: ActivatedRoute,
               private rentalService: RentalService,
               private location: Location) {}
@@ -93,9 +88,32 @@ export class RentalComponent implements OnInit {
     });
   }
 
+  public moveToNextImage(el): void {
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+    });
+  }
+
+  public moveToFirstImage(el): void {
+    setTimeout(() => {
+      el = document.getElementById('gallery').querySelector(':first-child');
+      el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+    });
+  }
+
+  onRentalSelect(feature: RentalFeature): void {
+    this.feature = feature;
+  }
+
   isPetsAllowed(): boolean {
     var index = this.rental.featureIndexOf(FEATURE_PETS_PROHIBITED);
     if (index > -1) { return !this.rental.features[index].prohibited; }
     return false;
+  }
+
+  get mailto(): string {
+    var subject ="&subject=rental-request: " + this.rental.name;
+    var body = "&body=Body-goes-here";
+    return this._mailto + subject + body;
   }
 }

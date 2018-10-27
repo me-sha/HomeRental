@@ -1,5 +1,3 @@
-/**/
-
 div.images {
   padding-top: 20px;
   float: none;
@@ -18,8 +16,20 @@ div.images div.gallery div.image {
   vertical-align: middle;
 }
 
+div.images div.gallery div.image button.next {
+  max-height: 380px;
+  height: 370px;
+  background: none;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  align: center;
+  font-size: 25px;
+}
+
 div.images div.image img {
-  margin-right: 10px;
   max-height: 380px;
   max-width: 100%;
   align: center;
@@ -114,6 +124,9 @@ div.pricing details div.calculation {
 div.pricing details div.calculation pre {
   font-family: monospace;
   font-size: 14;
+}
+
+div.pricing details div.calculation pre div.pets {
 }
 
 div.pricing details div.calculation pre button {
