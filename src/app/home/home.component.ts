@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ReadMoreComponent } from '../app.readmore';
 
 @Component({
   selector: 'app-home',
