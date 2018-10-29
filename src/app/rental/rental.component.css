@@ -1,3 +1,4 @@
+
 div.images {
   padding-top: 20px;
   float: none;
@@ -8,25 +9,39 @@ div.images div.gallery {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  background-color: black;
 }
 
 div.images div.gallery div.image {
+  position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
-div.images div.gallery div.image button.next {
-  max-height: 380px;
-  height: 370px;
-  background: none;
+div.images div.gallery div.image button {
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  align: center;
+  background-color: Transparent;
   border: none;
-  text-decoration: none;
-  display: inline-block;
   font-weight: bold;
   text-align: center;
-  align: center;
-  font-size: 25px;
+  font-size: 48px;
+  text-shadow: 4px 4px black;
+  opacity: 0.6;
+}
+
+div.images div.gallery div.image button:hover {
+  opacity: 1;
+}
+
+div.images div.gallery div.image button.next {
+  left: 0px;
+  transform: translate(-100%,0);
+}
+
+div.images div.gallery div.image button.first {
+  right: 0px
 }
 
 div.images div.image img {
@@ -70,7 +85,9 @@ div.features div.feature div.p,div.s {
 
 div.features div.feature div.s {
   left: 6px;
-}
+}  left: 0px;
+  transform: translate(-50%,0);
+
 
 div.features div.crossed ::after {
   position: relative !important;

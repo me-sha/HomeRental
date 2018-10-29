@@ -2,11 +2,11 @@
 <h3>{{rental.short_desc}}</h3>
 <div class="images">
   <h4>Pictures</h4>
-  <div class="gallery">
+  <div #gallery class="gallery">
     <div *ngFor="let image of rental.images; let i = index" class="image">
-      <button *ngIf="i!=0" class="next" (click)="moveToNextImage(img)">&gt;</button>
       <img #img [src]="image.url" [alt]="image.desc" [title]="image.title"/>
-      <button *ngIf="i==rental.images.length-1" class="next" (click)="moveToFirstImage(img)">&#x25B6;</button>
+      <button *ngIf="i!=0" class="next" (click)="moveToNextImage(img)">&gt;</button>
+      <button *ngIf="i===rental.images.length-1" class="first" (click)="moveToFirstImage(img)">&lt;</button>
     </div>
   </div>
 </div>

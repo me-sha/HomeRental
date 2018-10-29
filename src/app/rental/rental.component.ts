@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature } from './feature';
@@ -94,11 +94,12 @@ export class RentalComponent implements OnInit {
     });
   }
 
+  @ViewChild('gallery', { read: ElementRef }) public gallery: ElementRef<any>;
   public moveToFirstImage(el): void {
-    setTimeout(() => {
-      el = document.getElementById('gallery').querySelector(':first-child');
-      el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
-    });
+    //el = document.getElementById('gallery').querySelector(':first-child');
+    el = this.gallery.nativeElement.children[0];
+    el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
+    console.log('in moveToFirstImage(): '+el);
   }
 
   onRentalSelect(feature: RentalFeature): void {
