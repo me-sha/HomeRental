@@ -1,0 +1,86 @@
+
+div .rentals {
+  position: absolute;
+  float: none;
+  clear: both;
+}
+
+ul.houses, ul.flats {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  position: relative;
+  list-style: none;
+}
+li.rental {
+  margin-top: 8px;
+  min-height: 196px;
+  background-color: lightgrey;
+}
+li.rental:nth-child(even) {
+}
+li.rental:hover {
+  background-color: #efefef;
+}
+
+div.desc {
+  float: left;
+  padding: 10px;
+}
+
+div.image {
+  float: left;
+  border: solid;
+  border-width: 8px;
+  border-color: Transparent;
+  height: 180px;
+  max-width: 320px;
+}
+
+img {
+  height: 180px;
+}
+
+div.features {
+  float: none;
+  clear: both;
+}
+
+div.features div.feature {
+  margin-bottom: 16px;
+  padding-right: 22px;
+  float: left;
+  clear: right;
+  height: 48px;
+}
+
+div.features div.feature i.symbol {
+  font-family: 'LastResort', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Symbola', 'Unifont Upper';
+  user-select: none;
+  font-size: 32px;
+  font-style: normal;
+}
+
+div.features div.feature div.p,div.s {
+  padding-top: 4px;
+  font-size: 12px;
+  position: relative !important;
+  top: -16px !important;
+}
+
+div.features div.feature div.s {
+  left: 6px;
+}
+
+div.features div.crossed ::after {
+  position: relative !important;
+  float: none !important;
+  top: -24px !important;
+  left: 0px;
+  transform: rotate(45deg);
+  display: block;
+  width: 110%;
+  height: 4px;
+  background: red;
+  content: '';
+}

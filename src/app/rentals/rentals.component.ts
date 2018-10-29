@@ -19,4 +19,12 @@ export class RentalsComponent implements OnInit {
       this.rentals = rentals;
     });
   }
+
+  getHouses() {
+    return this.rentals.filter(rntl => rntl.house === true);
+  }
+
+  getFlats() {
+    return this.rentals.filter(rntl => rntl.house === false);
+  }
 }

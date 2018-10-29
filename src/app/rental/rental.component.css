@@ -87,9 +87,7 @@ div.features div.feature div.p,div.s {
 
 div.features div.feature div.s {
   left: 6px;
-}  left: 0px;
-  transform: translate(-50%,0);
-
+}
 
 div.features div.crossed ::after {
   position: relative !important;
