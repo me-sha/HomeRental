@@ -28,10 +28,12 @@ div.images div.gallery div.image button {
   text-align: center;
   font-size: 48px;
   text-shadow: 4px 4px black;
+  background-color: rgba(0,0,0,0);
   opacity: 0.6;
 }
 
 div.images div.gallery div.image button:hover {
+  background-color: rgba(0,0,0,0.1);
   opacity: 1;
 }
 
