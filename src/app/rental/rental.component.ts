@@ -76,6 +76,7 @@ export class RentalComponent implements OnInit {
   feature: RentalFeature;
 
   private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com, another@site.com, me@site.com";
+
   constructor(private route: ActivatedRoute,
               private rentalService: RentalService,
               private location: Location) {}
@@ -112,9 +113,10 @@ export class RentalComponent implements OnInit {
     return false;
   }
 
-  get mailto(): string {
+  mailTo(): boolean {
     var subject ="&subject=rental-request: " + this.rental.name;
     var body = "&body=Body-goes-here";
-    return this._mailto + subject + body;
+    window.location.href = this._mailto + subject + body;
+    return true;
   }
 }

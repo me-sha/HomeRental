@@ -1,44 +1,62 @@
 
-div .rentals {
-  position: absolute;
+div.rentals {
   float: none;
   clear: both;
 }
 
 ul.houses, ul.flats {
+  float: none;
+  clear: both;
   margin-bottom: 10px;
   padding-bottom: 10px;
   padding-left: 0px;
-  position: relative;
   list-style: none;
 }
 li.rental {
   margin-top: 8px;
-  min-height: 196px;
-  background-color: lightgrey;
+  height: auto;
 }
+/*
 li.rental:nth-child(even) {
 }
-li.rental:hover {
-  background-color: #efefef;
+*/
+div.content {
+  float: none;
+  clear:both;
+  border-radius: 8px;
+  background-color: lightgrey;
+  display: inline-block;
 }
 
 div.desc {
   float: left;
-  padding: 10px;
+  margin: 12px;
+  padding: 12px;
+  background: solid;
+  border-radius: 6px;
+  background-color: #eee;
 }
 
 div.image {
+  display: inline-block;
   float: left;
+  margin: 12px;
   border: solid;
-  border-width: 8px;
-  border-color: Transparent;
-  height: 180px;
-  max-width: 320px;
+  border-width: 12px;
+  border-color: #eee;
+  background-color: #eee;
+  border-radius: 6px;
+  width: calc(100% - 24px);
 }
 
 img {
+  display: block;
+  padding: auto;
+  margin: auto;
+  max-width: 320px;
   height: 180px;
+  border-radius: 6px;
+  border-color: Transparent;
 }
 
 div.features {
@@ -48,7 +66,7 @@ div.features {
 
 div.features div.feature {
   margin-bottom: 16px;
-  padding-right: 22px;
+  padding-right: 16px;
   float: left;
   clear: right;
   height: 48px;
@@ -65,11 +83,11 @@ div.features div.feature div.p,div.s {
   padding-top: 4px;
   font-size: 12px;
   position: relative !important;
-  top: -16px !important;
+  top: -14px !important;
 }
 
 div.features div.feature div.s {
-  left: 6px;
+  left: 2px;
 }
 
 div.features div.crossed ::after {
@@ -79,8 +97,25 @@ div.features div.crossed ::after {
   left: 0px;
   transform: rotate(45deg);
   display: block;
-  width: 110%;
+  width: 100%;
   height: 4px;
   background: red;
   content: '';
+}
+
+button.more {
+  margin-left: 12px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: none;
+  display: block;
+  width: calc(100% - 24px);
+  font-weight: bold;
+  background-color: #eee;
+  color: black;
+  text-align: center;
+  background: solid;
+  -webkit-appearance: none;
+  border: 0;
 }

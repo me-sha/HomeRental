@@ -35,8 +35,7 @@ Cleaning Fee:&nbsp;&nbsp;&nbsp;+&nbsp;<b>{{rental.clean_extra | number : '3.2-2'
       </pre>
     </div>
   </details>
-  <div class="bookings"></div>
-  <div class="request">
-    <a href={{mailto}}>Request Rental</a>
+  <div class="bookings">
+    <button class="request" (click)="mailTo()">Request Booking</button>
   </div>
 </div>

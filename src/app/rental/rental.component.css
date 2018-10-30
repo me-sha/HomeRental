@@ -104,6 +104,7 @@ div.features div.crossed ::after {
 
 div.desc {
   padding-top: 20px;
+  padding-right: 2%;
   float: none;
   clear: left;
 }
@@ -171,21 +172,21 @@ div.pricing details div.calculation hr {
   margin-left: 0;
 }
 
-div.request {
+div.bookings button.request {
   margin-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 6px;
   padding-bottom: 6px;
   border-radius: 6px;
-  background-color: #e7e7e7;
-  text-align: center;
-  align-content: center;
-}
-
-div.request a {
+  box-shadow: none;
   display: block;
+  width: 100%;
   font-weight: bold;
-  vertical-align: middle !important;
+  background-color: #eee;
   color: black;
+  text-align: center;
+  background: solid;
+  -webkit-appearance: none;
+  border: 0;
 }

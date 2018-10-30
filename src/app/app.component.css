@@ -1,15 +1,18 @@
 body {
+  float: none;
+  clear: both;
 }
 
 header {
-  margin-top: 50px;
-  margin-left: 5%;
+  /*margin-top: 10%;*/
+  margin-left: 4%;
+  margin-right: 2%;
   text-align: left;
 }
 
 nav {
   padding-top: 10px;
-  margin-left: 5%;
+  margin-left: 4%;
 }
 
 nav a {
@@ -32,22 +35,24 @@ nav a.active {
 }
 
 hr.header {
-  padding: 20px;
+  /*padding: 20px;*/
 }
 
 main {
-  margin-top: 20px;
-  margin-left: 10%;
-  max-width: 80%;
+  float: none;
+  clear: both;
+  margin-top: 4%;
+  margin-left: 8%;
+  margin-right: 2%;
 }
 
 hr.footer {
-  margin-top: 50px;
+  margin-top: 10%;
 }
 
 footer {
   padding-top: 10px;
-  margin-left: 5%;
+  margin-left: 4%;
 }
 
 footer div {

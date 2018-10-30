@@ -2,20 +2,23 @@
 <h2>Rentals</h2>
 <h3>Houses</h3>
 <ul class="houses">
-  <li class="rental" *ngFor="let rental of getHouses()" routerLink="/rental/{{rental.id}}">
-    <div class="image"><img src="{{rental.images[0].url}}"/></div>
-    <div class="desc">
-      <h4>{{rental.name}}</h4>
-      <p>{{rental.short_desc}}</p>
-      <div class="features">
-        <h4>Features</h4>
-        <div *ngFor="let feature of rental.features" class="feature"
-             [class.crossed]="feature.prohibited" title="{{feature.desc}}">
-          <i class="symbol" [innerHtml]="feature.symbol"></i>
-          <div *ngIf="feature.people" class="p">Max. {{feature.people}}</div>
-          <div *ngIf="feature.space" class="s">{{feature.space}}m²</div>
+  <li class="rental" *ngFor="let rental of getHouses()">
+    <div class="content">
+      <div class="image"><img src="{{rental.images[0].url}}"/></div>
+      <div class="desc">
+        <h4>{{rental.name}}</h4>
+        <p>{{rental.short_desc}}</p>
+        <div class="features">
+          <h4>Features</h4>
+          <div *ngFor="let feature of rental.features" class="feature"
+               [class.crossed]="feature.prohibited" title="{{feature.desc}}">
+            <i class="symbol" [innerHtml]="feature.symbol"></i>
+            <div *ngIf="feature.people" class="p">Max. {{feature.people}}</div>
+            <div *ngIf="feature.space" class="s">{{feature.space}}m²</div>
+          </div>
         </div>
       </div>
+      <button class="more" routerLink="/rental/{{rental.id}}">More</button>
     </div>
   </li>
 </ul>
