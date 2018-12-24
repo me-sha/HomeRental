@@ -6,19 +6,21 @@
     <div *ngFor="let image of rental.images; let i = index" class="image">
       <img #img [src]="image.url" [alt]="image.desc" [title]="image.title"/>
       <button *ngIf="i!=0" class="next" (click)="moveToNextImage(img)">&gt;</button>
-      <button *ngIf="i===rental.images.length-1" class="first" (click)="moveToFirstImage(img)">&lt;</button>
+      <button *ngIf="i===rental.images.length-1" class="first"
+          (click)="moveToFirstImage(img)">&lt;</button>
     </div>
   </div>
 </div>
 <br/>
 <div class="features">
   <h4>Features</h4>
-  <div *ngFor="let feature of rental.features" class="feature"
-       [class.crossed]="feature.prohibited" title="{{feature.desc}}">
-    <i class="symbol" [innerHtml]="feature.symbol"></i>
-    <div *ngIf="feature.people" class="p">Max. {{feature.people}}</div>
-    <div *ngIf="feature.space" class="s">{{feature.space}}m²</div>
+  <div *ngFor="let feat of rental.features" class="feature selectable" title="{{feat.getDesc()}}"
+      (click)="onFeatureSelect(feat)" [class.crossed]="feat.prohibited" [class.selected]="featureSelected && feat==feature">
+    <i class="symbol" [innerHtml]="feat.symbol"></i>
+    <div *ngIf="feat.people" class="p">Max:{{feat.people}}</div>
+    <div *ngIf="feat.space" class="s">{{feat.space}}m²</div>
   </div>
+  <div *ngIf="featureSelected" class="desc">{{feature.getDesc()}}</div>
 </div>
 <div class="desc">
   <h4>Description</h4>
@@ -35,7 +37,5 @@ Cleaning Fee:&nbsp;&nbsp;&nbsp;+&nbsp;<b>{{rental.clean_extra | number : '3.2-2'
       </pre>
     </div>
   </details>
-  <div class="bookings">
-    <button class="request" (click)="mailTo()">Request Booking</button>
-  </div>
 </div>
+<button class="booking selectable" (click)="mailTo()">Request Booking</button>

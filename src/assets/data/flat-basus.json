@@ -12,12 +12,12 @@
   "_pet_number": 0,
   "features": [{
     "symbol": "&#128100;",
-    "desc": "Maximum allowed number of people:",
+    "desc": "Maximum allowed number of people: ",
     "prohibited": false,
     "people": 4
   }, {
     "symbol": "&#127968;",
-    "desc": "Living space in square meter:",
+    "desc": "Living space in square meter: ",
     "prohibited": false,
     "space": 65
   }, {

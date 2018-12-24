@@ -5,7 +5,7 @@ import { Component, Input, ElementRef, OnChanges} from '@angular/core';
     template: `
         <div [innerHTML]="currentText">
         </div>
-        <a [class.hidden]="hideToggle" (click)="toggleView()">Read {{isCollapsed? 'more':'less'}}.</a>
+        <a class="readmore selectable" [class.hidden]="hideToggle" (click)="toggleView()">Read {{isCollapsed? 'more':'less'}}.</a>
     `
 })
 

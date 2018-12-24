@@ -74,6 +74,7 @@ export class RentalComponent implements OnInit {
 
   rental: Rental;
   feature: RentalFeature;
+  featureSelected: boolean = false;
 
   private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com, another@site.com, me@site.com";
 
@@ -89,22 +90,28 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  public moveToNextImage(el): void {
+  moveToNextImage(el): void {
     setTimeout(() => {
       el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
     });
   }
 
   @ViewChild('gallery', { read: ElementRef }) public gallery: ElementRef<any>;
-  public moveToFirstImage(el): void {
+  moveToFirstImage(el): void {
     //el = document.getElementById('gallery').querySelector(':first-child');
     el = this.gallery.nativeElement.children[0];
     el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
     console.log('in moveToFirstImage(): '+el);
   }
 
-  onRentalSelect(feature: RentalFeature): void {
+  onFeatureSelect(feature: RentalFeature): void {
+    if (feature == this.feature) {
+      this.featureSelected = !this.featureSelected;
+      return;
+    }
+
     this.feature = feature;
+    this.featureSelected = true;
   }
 
   isPetsAllowed(): boolean {

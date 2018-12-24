@@ -22,7 +22,7 @@ export class RentalService {
   }
 
   getRental(id: string): Observable<Rental> {
-    for(var rental of this._rentals) {
+    for (var rental of this._rentals) {
       if(rental.id === id) { return of(rental); }
     }
 

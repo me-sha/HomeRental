@@ -1,6 +1,6 @@
-import {Deserializeable} from './deserializeable';
-import {RentalFeature, PeopleRentalFeature, SpaceRentalFeature} from './feature';
-import {RentalImage} from './image'
+import { Deserializeable } from './deserializeable';
+import { RentalFeature , PeopleRentalFeature, SpaceRentalFeature} from './feature';
+import { RentalImage } from './image'
 
 export class Rental implements Deserializeable<Rental> {
   id: string;
@@ -14,7 +14,6 @@ export class Rental implements Deserializeable<Rental> {
   images: Array<RentalImage>;
   day_price: number;
   clean_extra: number;
-  bookings: string;
 
   private _weekly_total: number;
   weekly_diverged = true;

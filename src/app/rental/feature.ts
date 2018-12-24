@@ -9,10 +9,12 @@ export class RentalFeature implements Deserializeable<RentalFeature> {
     jQuery.extend(this, json);
     return this;
   }
+
+  getDesc(): string { return this.desc; }
 };
 
 export class PeopleRentalFeature extends RentalFeature {
-  private _people: number;
+  people: number;
 
   constructor() {
     super();
@@ -25,15 +27,14 @@ export class PeopleRentalFeature extends RentalFeature {
     return this;
   }
 
-  set people(people: number) {
-    this.desc = 'Maximum allowed number of people: ' + people;
-    this._people = people;
+  getDesc(): string {
+    alert("Called from B");
+    return this.desc + this.people;
   }
-  get people() { return this._people; }
 };
 
 export class SpaceRentalFeature extends RentalFeature {
-  private _space: number;
+  space: number;
 
   constructor() {
     super();
@@ -46,9 +47,5 @@ export class SpaceRentalFeature extends RentalFeature {
     return this;
   }
 
-  set space(space: number) {
-    this.desc = 'Living space in square meter: ' + space + ' qm';
-    this._space = space;
-  }
-  get space() { return this._space; }
+  getDesc(): string { return this.desc + this.space; }
 };

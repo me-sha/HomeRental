@@ -60,17 +60,13 @@ div.features {
 
 div.features div.feature {
   margin-bottom: 16px;
-  margin-right: 4%;
+  margin-right: 2%;
   float: left;
   clear: right;
   height: 70px;
-}
-
-div.features div.bordered {
-  border-style: solid;
-  border-color: lightgrey;
-  border-width: 2px;
-  border-radius: 12px 12px 12px 12px;
+  width: 70px;
+  border-radius: 6px;
+  text-align: center;
 }
 
 div.features div.feature i.symbol {
@@ -80,7 +76,7 @@ div.features div.feature i.symbol {
   font-style: normal;
 }
 
-div.features div.feature div.p,div.s {
+div.features div.feature div.p, div.s {
   position: relative !important;
   top: -16px !important;
 }
@@ -93,13 +89,29 @@ div.features div.crossed ::after {
   position: relative !important;
   float: none !important;
   top: -40px !important;
-  left: -8px;
+  /*left: -4px;*/
   transform: rotate(45deg);
   display: block;
-  height: 4px;
-  width: 138%;
+  height: 5px;
+  /*width: 138%;*/
   background: red;
   content: '';
+}
+
+div.features div.selected {
+  background: solid;
+  background-color: #eee;
+}
+
+div.features div.desc {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background: solid;
+  border-radius: 6px;
+  background-color: #eee;
+  text-align: center;
 }
 
 div.desc {
@@ -172,7 +184,7 @@ div.pricing details div.calculation hr {
   margin-left: 0;
 }
 
-div.bookings button.request {
+button.booking {
   margin-top: 20px;
   padding-left: 10px;
   padding-right: 10px;

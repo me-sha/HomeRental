@@ -2,3 +2,13 @@
  * @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css");
  * import moved to index.html
  */
+
+.selectable {
+  user-select: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.selectable:hover {
+  background-color: #cfd8dc !important;
+}
