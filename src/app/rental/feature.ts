@@ -28,7 +28,7 @@ export class PeopleRentalFeature extends RentalFeature {
   }
 
   getDesc(): string {
-    alert("Called from B");
+    console.log('It works here');
     return this.desc + this.people;
   }
 };

@@ -17,6 +17,9 @@ export class Rental implements Deserializeable<Rental> {
 
   private _weekly_total: number;
   weekly_diverged = true;
+  max_weeks = 6;
+  weeks = 1;
+
   pet_extra: number;
   private _pet_number: number;
   max_pet_number: number = 8;

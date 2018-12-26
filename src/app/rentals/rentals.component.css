@@ -24,21 +24,16 @@ div.content {
   float: none;
   clear:both;
   border-radius: 8px;
-  background-color: lightgrey;
+  background-color: #eee;
   display: inline-block;
+  max-width: 1024px;
 }
 
 div.image {
-  display: inline-block;
   float: left;
-  margin-left: 12px;
-  margin-top: 12px;
-  border: solid;
-  border-width: 12px;
-  border-color: #eee;
+  margin: 12px;
   background-color: #eee;
   border-radius: 6px;
-  width: calc(100% - 24px);
 }
 
 img {
@@ -53,17 +48,15 @@ img {
 
 div.desc {
   float: left;
-  margin: 12px;
-  padding: 16px;
-  width: calc(100% - 24px);
+  margin: 12px 0px 0px 12px;
   background: solid;
   border-radius: 6px;
   background-color: #eee;
 }
 
 div.features {
-  float: none;
-  clear: both;
+  float: left;
+  margin: 12px 12px 0px 12px;
 }
 
 div.features div.feature {
@@ -106,8 +99,7 @@ div.features div.crossed ::after {
 }
 
 button.more {
-  margin-left: 12px;
-  margin-bottom: 12px;
+  margin: 12px 0px 12px 9px;
   padding: 8px;
   border-radius: 6px;
   box-shadow: none;
@@ -115,9 +107,11 @@ button.more {
   width: calc(100% - 24px);
   font-weight: bold;
   background-color: #eee;
+  border-color: #cfd8dc;
+  border-width: 3px;
+  border-style: solid;
   color: black;
   text-align: center;
   background: solid;
   -webkit-appearance: none;
-  border: 0;
 }
