@@ -8,6 +8,7 @@ import { RentalComponent } from './rental/rental.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RentalsComponent } from './rentals/rentals.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RentalsComponent } from './rentals/rentals.component';
     HomeComponent,
     RentalComponent,
     RentalsComponent,
+    FeaturesComponent,
   ],
   imports: [
     BrowserModule,

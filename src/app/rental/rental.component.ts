@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { RentalFeature, PeopleRentalFeature, SpaceRentalFeature } from './feature';
+import { RentalFeature, FEATURE_PETS_PROHIBITED } from '../features/feature';
 import { RentalImage } from './image'
 import { Rental } from './rental';
 import { RentalService } from '../rental.service';
@@ -10,73 +10,15 @@ export function paddingLeft(text: string, padChar: string, size: number): string
   return (String(padChar).repeat(size)).substr( (size * -1), size);
 };
 
-const FEATURE_SMOKING: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128684;',
-  desc: 'No smoking inside!',
-  prohibited: false
-});
-
-const FEATURE_SMOKING_PROHIBITED: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128684;',
-  desc: 'No smoking inside!',
-  prohibited: true
-});
-
-export const FEATURE_PETS_ALLOWED: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128021;',
-  desc: 'Pets are allowed.',
-  prohibited: false
-});
-
-export const FEATURE_PETS_PROHIBITED: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128021;',
-  desc: 'No pets are allowed!',
-  prohibited: true
-});
-
-const FEATURE_BEACH_CHAIR: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#127958;',
-  desc: 'Personal Beach Chair on the beach.',
-  prohibited: false
-});
-
-const FEATURE_TV: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128250;',
-  desc: 'TV available.',
-  prohibited: false
-});
-
-const FEATURE_INTERNET_WLAN: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128246;',
-  desc: 'Internet via WLAN',
-  prohibited: false
-});
-
-const FEATURE_WASHER_DISHES: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#127869;',
-  desc: 'Dish washer available.',
-  prohibited: false
-});
-
-const FEATURE_WASHER_LAUNDRY: RentalFeature = (new RentalFeature()).deserialize({
-  symbol: '&#128085;',
-  desc: 'Laundry washer available.',
-  prohibited: false
-});
-
 @Component({
   selector: 'app-rental',
   templateUrl: './rental.component.html',
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
-  FEATURE_PETS_PROHIBITED = FEATURE_PETS_PROHIBITED;
-
   rental: Rental;
-  feature: RentalFeature;
-  featureSelected: boolean = false;
 
-  private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com, another@site.com, me@site.com";
+  private _mailto: String = "mailto:info@hhr.com?cc=cc@site.com";
 
   constructor(private route: ActivatedRoute,
               private rentalService: RentalService,
@@ -98,20 +40,8 @@ export class RentalComponent implements OnInit {
 
   @ViewChild('gallery', { read: ElementRef }) public gallery: ElementRef<any>;
   moveToFirstImage(el): void {
-    //el = document.getElementById('gallery').querySelector(':first-child');
     el = this.gallery.nativeElement.children[0];
     el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
-    console.log('in moveToFirstImage(): '+el);
-  }
-
-  onFeatureSelect(feature: RentalFeature): void {
-    if (feature == this.feature) {
-      this.featureSelected = !this.featureSelected;
-      return;
-    }
-
-    this.feature = feature;
-    this.featureSelected = true;
   }
 
   isPetsAllowed(): boolean {
@@ -121,8 +51,12 @@ export class RentalComponent implements OnInit {
   }
 
   mailTo(): boolean {
-    var subject ="&subject=rental-request: " + this.rental.name;
-    var body = "&body=Body-goes-here";
+    var subject = "&subject=rental-request:" + this.rental.name;
+    var body = "&body=" + encodeURI(""
+             + "People: (1-" + this.rental.max_people + ")\n"
+             + "Pets: (0-" + this.rental.max_pet_number + ")\n"
+             + "Weeks: (1-" + this.rental.max_weeks + ")\n"
+             + "Date: DD.MM." + (new Date()).getFullYear() + "\n");
     window.location.href = this._mailto + subject + body;
     return true;
   }

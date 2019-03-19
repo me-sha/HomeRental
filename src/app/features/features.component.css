@@ -1,0 +1,58 @@
+
+div.feature {
+  margin-bottom: 16px;
+  margin-right: 2%;
+  float: left;
+  clear: right;
+  height: 70px;
+  width: 70px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+div.feature i.symbol {
+  font-family: 'LastResort', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Symbola', 'Unifont Upper';
+  user-select: none;
+  font-size: 50px;
+  font-style: normal;
+}
+
+div.feature div.p, div.s {
+  position: relative !important;
+  top: -16px !important;
+}
+
+div.feature div.s {
+  left: 6px;
+}
+
+div.crossed ::after {
+  position: relative !important;
+  float: none !important;
+  top: -40px !important;
+  /*left: -4px;*/
+  transform: rotate(45deg);
+  display: block;
+  height: 5px;
+  /*width: 138%;*/
+  background: red;
+  content: '';
+}
+
+div.selected {
+  background: solid;
+  background-color: #eee;
+}
+
+div.desc {
+  float: none;
+  clear: both;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background: solid;
+  border-radius: 6px;
+  background-color: #eee;
+  text-align: center;
+}

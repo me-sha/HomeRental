@@ -2,6 +2,8 @@
   "id": "flat-basus",
   "name": "Flat Basus",
   "house": false,
+  "living_space": 65,
+  "max_people": 4,
   "short_desc": "Basic holiday flat with balcony.",
   "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "day_price": 50.99,
@@ -12,14 +14,14 @@
   "_pet_number": 0,
   "features": [{
     "symbol": "&#128100;",
-    "desc": "Maximum allowed number of people: ",
+    "desc": "Maximum allowed number of guests",
     "prohibited": false,
-    "people": 4
+    "people": true
   }, {
     "symbol": "&#127968;",
-    "desc": "Living space in square meter: ",
+    "desc": "Living space in square meter",
     "prohibited": false,
-    "space": 65
+    "space": true
   }, {
     "symbol": "&#128021;",
     "desc": "Pets are not allowed!",

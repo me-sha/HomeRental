@@ -13,7 +13,7 @@ ul.houses, ul.flats {
   list-style: none;
 }
 li.rental {
-  margin-top: 8px;
+  margin-top: 12px;
   height: auto;
 }
 /*
@@ -54,48 +54,8 @@ div.desc {
   background-color: #eee;
 }
 
-div.features {
-  float: left;
+div.app-features {
   margin: 12px 12px 0px 12px;
-}
-
-div.features div.feature {
-  margin-bottom: 8px;
-  padding-right: 12px;
-  float: left;
-  clear: right;
-  height: 48px;
-}
-
-div.features div.feature i.symbol {
-  font-family: 'LastResort', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Symbola', 'Unifont Upper';
-  user-select: none;
-  font-size: 32px;
-  font-style: normal;
-}
-
-div.features div.feature div.p,div.s {
-  padding-top: 4px;
-  font-size: 12px;
-  position: relative !important;
-  top: -14px !important;
-}
-
-div.features div.feature div.s {
-  left: 2px;
-}
-
-div.features div.crossed ::after {
-  position: relative !important;
-  float: none !important;
-  top: -24px !important;
-  left: 0px;
-  transform: rotate(45deg);
-  display: block;
-  width: 100%;
-  height: 4px;
-  background: red;
-  content: '';
 }
 
 button.more {

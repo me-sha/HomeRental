@@ -2,24 +2,26 @@
   "id": "house-tremendous",
   "name": "House Tremendous",
   "house": true,
+  "living_space": 120,
+  "max_people": 6,
   "short_desc": "Tremendous holiday house with a lovely garden.",
   "detail_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "day_price": 65.25,
   "clean_extra": 50,
-  "pet_extra": 10,
   "weekly_diverged": true,
+  "max_weeks": 6,
+  "pet_extra": 10,
   "max_pet_number": 8,
-  "_pet_number": 0,
   "features": [{
     "symbol": "&#128100;",
-    "desc": "Maximum allowed number of people:",
+    "desc": "Maximum allowed number of guests",
     "prohibited": false,
-    "people": 6
+    "people": true
   }, {
     "symbol": "&#127968;",
-    "desc": "Living space in square meter:",
+    "desc": "Living space in square meter",
     "prohibited": false,
-    "space": 120
+    "space": true
   }, {
     "symbol": "&#128021;",
     "desc": "Pets are allowed!",
@@ -30,7 +32,7 @@
     "prohibited": true
   }, {
     "symbol": "&#127958;",
-    "desc": "Personal Beach Chair on the beach.",
+    "desc": "Personal Beach Chair.",
     "prohibited": false
   }, {
     "symbol": "&#128250;",

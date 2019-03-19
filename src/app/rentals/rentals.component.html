@@ -9,15 +9,7 @@
         <h4>{{rental.name}}</h4>
         <p>{{rental.short_desc}}</p>
       </div>
-      <div class="features">
-        <h4>Features</h4>
-        <div *ngFor="let feature of rental.features" class="feature"
-             [class.crossed]="feature.prohibited" title="{{feature.desc}}">
-          <i class="symbol" [innerHtml]="feature.symbol"></i>
-          <div *ngIf="feature.people" class="p">Max. {{feature.people}}</div>
-          <div *ngIf="feature.space" class="s">{{feature.space}}m²</div>
-        </div>
-      </div>
+      <app-features [rental]="rental"></app-features>
       <button class="more selectable" routerLink="/rental/{{rental.id}}">More</button>
     </div>
   </li>

@@ -1,6 +1,6 @@
-import { Deserializeable } from './deserializeable';
-import { RentalFeature , PeopleRentalFeature, SpaceRentalFeature} from './feature';
-import { RentalImage } from './image'
+import { Deserializeable } from '../util/deserializeable';
+import { RentalFeature, FEATURE_MAX_PEOPLE, FEATURE_LIVING_SPACE } from '../features/feature';
+import { RentalImage } from './image';
 
 export class Rental implements Deserializeable<Rental> {
   id: string;
@@ -16,12 +16,12 @@ export class Rental implements Deserializeable<Rental> {
   clean_extra: number;
 
   private _weekly_total: number;
+  private _weeks = 1;
   weekly_diverged = true;
   max_weeks = 6;
-  weeks = 1;
 
+  private _pet_number: number = 0;
   pet_extra: number;
-  private _pet_number: number;
   max_pet_number: number = 8;
 
   constructor() {
@@ -31,17 +31,11 @@ export class Rental implements Deserializeable<Rental> {
 
   deserialize(json) {
     jQuery.extend(this, json);
+
     if (json.features) { this.features = jQuery.map(json.features, (e) => { return (new RentalFeature()).deserialize(e); }); }
     if (json.images)   { this.images = jQuery.map(json.images, (e) => { return (new RentalImage()).deserialize(e); }); }
-    return this;
-  }
 
-  init() {
-    this._pet_number = 0;
-    this.features.push(
-      (new PeopleRentalFeature()).init(this.max_people),
-      (new SpaceRentalFeature()).init(this.living_space)
-    );
+    return this;
   }
 
   featureIndexOf(feature: RentalFeature) {
@@ -49,8 +43,14 @@ export class Rental implements Deserializeable<Rental> {
       var f = this.features[i];
       if (f.symbol === feature.symbol ) { return i; }
     }
-
     return -1;
+  }
+
+  set weeks(weeks) {
+    this._weeks = weeks;
+  }
+  get weeks() {
+    return this._weeks;
   }
 
   get weekly_total(): number {
