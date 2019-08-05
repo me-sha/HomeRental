@@ -38,7 +38,7 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  @ViewChild('gallery', { read: ElementRef }) public gallery: ElementRef<any>;
+  @ViewChild('gallery', { read: ElementRef, static: true }) public gallery: ElementRef<any>;
   moveToFirstImage(el): void {
     el = this.gallery.nativeElement.children[0];
     el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
