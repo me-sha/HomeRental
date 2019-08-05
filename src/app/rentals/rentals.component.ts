@@ -5,10 +5,13 @@ import { Rental } from  '../rental/rental';
 @Component({
   selector: 'app-rentals',
   templateUrl: './rentals.component.html',
-  styleUrls: ['./rentals.component.css']
+  styleUrls: ['./rentals.component.css'],
 })
 export class RentalsComponent implements OnInit {
   rentals: Array<Rental>;
+
+  filtHouses: boolean = true;
+  filtFlats: boolean = true;
 
   constructor(private rentalService: RentalService) {
     this.rentals = new Array<Rental>();
@@ -20,11 +23,8 @@ export class RentalsComponent implements OnInit {
     });
   }
 
-  getHouses() {
-    return this.rentals.filter(rntl => rntl.house === true);
-  }
-
-  getFlats() {
-    return this.rentals.filter(rntl => rntl.house === false);
+  getRentals() {
+    return this.rentals
+      .filter(rntl => rntl.house === this.filtHouses);
   }
 }

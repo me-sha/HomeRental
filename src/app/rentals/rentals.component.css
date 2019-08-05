@@ -4,7 +4,7 @@ div.rentals {
   clear: both;
 }
 
-ul.houses, ul.flats {
+ul.rentals {
   float: none;
   clear: both;
   margin-bottom: 10px;
@@ -40,8 +40,8 @@ img {
   display: block;
   padding: auto;
   margin: auto;
-  max-width: 320px;
-  height: 180px;
+  max-width: 420px;
+  max-height: 328px;
   border-radius: 6px;
   border-color: Transparent;
 }
@@ -54,7 +54,8 @@ div.desc {
   background-color: #eee;
 }
 
-div.app-features {
+div.features {
+  float: left;
   margin: 12px 12px 0px 12px;
 }
 

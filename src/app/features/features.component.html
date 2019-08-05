@@ -1,4 +1,3 @@
-<h4>Features</h4>
 <div *ngFor="let feat of features" class="feature selectable" title="{{feat.getDesc()}}"
     (click)="onFeatureSelect(feat)" [class.crossed]="feat.prohibited" [class.selected]="featureSelected && feat==feature">
   <i class="symbol" [innerHtml]="feat.symbol"></i>

@@ -1,20 +1,30 @@
 <div class="rentals">
 <h2>Rentals</h2>
-<h3>Houses</h3>
-<ul class="houses">
-  <li class="rental" *ngFor="let rental of getHouses()">
+<div class="filter">
+  <h3>Filter</h3>
+  <div class="houses">
+    <label for="houses">Houses:</label>
+    <input [(ngModel)]="filtHouses" name="houses" type="checkbox"/>
+  </div>
+  <div class="flats">
+    <label for="flats">Flats:</label>
+    <input [(ngModel)]="filtFlats" name="flats" type="checkbox"/>
+  </div>
+</div>
+<ul class="rentals">
+  <li class="rental" *ngFor="let rental of getRentals()">
     <div class="content">
       <div class="image"><img src="{{rental.images[0].url}}"/></div>
       <div class="desc">
         <h4>{{rental.name}}</h4>
         <p>{{rental.short_desc}}</p>
       </div>
-      <app-features [rental]="rental"></app-features>
+      <div class="features">
+        <h4>Features</h4>
+        <app-features [rental]="rental"></app-features>
+      </div>
       <button class="more selectable" routerLink="/rental/{{rental.id}}">More</button>
     </div>
   </li>
-</ul>
-<h3>Flats</h3>
-<ul class="flats">
 </ul>
 </div>
